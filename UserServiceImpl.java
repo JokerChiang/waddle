@@ -1,17 +1,17 @@
-package cn.tedu.spring.service;
+package service;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import cn.tedu.spring.dao.UserDao;
-import cn.tedu.spring.entity.User;
-import cn.tedu.spring.service.ex.UsernameTakenException;
+import dao.UserDao;
+import entity.User;
+import service.ex.UsernameTakenException;
 
 @Service("userService")
-public class UserServiceImpl 
+public class UserServiceImpl
 	implements IUserService {
-	
+
 	@Resource(name="userDao")
 	private UserDao userDao;
 
@@ -28,7 +28,7 @@ public class UserServiceImpl
 			// 根据用户名查询到了数据
 			// 则用户名已经被占用
 			// 则不允许注册
-			throw new 
+			throw new
 				UsernameTakenException(
 					"用户名已经被占用：" + username);
 		}
